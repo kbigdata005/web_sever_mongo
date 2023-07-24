@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <style>
+        table, th, td{
+            border: 1px solid #333;
+            border-collapse: collapse;
+        }
+
+        th {
+            font-size: 20px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>List</h1>
+
+    <table>
+        <tr>
+            <thead>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Desc</th>
+                <th>Author</th>
+                <th>Create_at</th>
+                <th>Etc.</th>
+            </thead>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{ x['_id'] }}</td>
+            <td>{{ x['title'] }}</td>
+            <td>{{ x['desc'] }}</td>
+            <td>{{ x['author'] }}</td>
+            <td>{{ x['create_at'] }}</td>
+            <td>삭제버튼 , 편집버튼</td>           
+        </tr>
+        {% endfor %}
+        <tr>
+            <tfoot>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Desc</th>
+                <th>Author</th>
+                <th>Create_at</th>
+                <th>Etc.</th>
+                </thead>
+        </tr>
+    </table>
+</body>
+
+</html>

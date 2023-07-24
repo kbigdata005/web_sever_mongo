@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap4.min.css') }}">
+    <title>Create</title>
+    <style>
+        p {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+
+
+        <form action="/create" method="post">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4" style="margin-top: 3rem;">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">글 작성</h4>
+                    <p>아래 형식에 맞게 글을 작성하시오.아래 형식에 맞게 글을 작성하시오.아래 형식에 맞게 글을 작성하시오.아래 형식에 맞게 글을 작성하시오.아래 형식에 맞게 글을 작성하시오.아래 형식에 맞게 글을 작성하시오.아래 형식에 맞게 글을 작성하시오.아래 형식에 맞게 글을 작성하시오.</p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input type="text" name="title" id="form6Example3" class="form-control" />
+                <label class="form-label" for="form6Example3">Title</label>
+            </div>
+
+            <!-- Message input -->
+            <div class="form-outline mb-4">
+                <textarea class="form-control" name="desc" id="form6Example7" rows="4"></textarea>
+                <label class="form-label" for="form6Example7">Description</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="text" name="author" id="form6Example3" class="form-control"
+                    value="{{ session['username'] }}" readonly>
+                <label class="form-label" for="form6Example3">Author</label>
+            </div>
+
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/datatables-demo.js') }}"></script>
+
+</body>
+
+</html>
