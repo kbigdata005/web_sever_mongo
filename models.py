@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 import datetime
-
 # 암호화 알고리즘. 256을 제일 많이 사용한다.
 from passlib.hash import pbkdf2_sha256
 from bson.objectid import ObjectId
@@ -71,24 +70,44 @@ class MyMongo:
         #     print(i)
         return list
     
+    def find_one_data(self , ids):
+        db =self.client.os
+        list = db.lists
+        data = list.find_one({'_id':ObjectId(ids)})
+        return data
+
     def insert_data(self, title, desc, author):
         db = self.client.os
-        lists = db.lists
+        list = db.lists
         data = {
             'title':title,
             'desc':desc,
             'author':author,
             'create_at':datetime.datetime.utcnow()
         }      
-        list = lists.insert_one(data)
+        list = list.insert_one(data)
         # for i in list:
         #     print(i)
         return list
+    def delete_data(self, id):
+        db = self.client.os
+        list = db.lists
+        list.delete_one({'_id': ObjectId(id)})
+        return "1"
+    
+    # [컬렉션 객체].update_one( { [조건값] }, {"$set":{수정값}} )
+    # knowledge_it.update_one({"author":"Dave"}, {"$set":{"text":"Hi Dave"}})
+    def update_data(self,id ,title, desc ):
+        db = self.client.os
+        list = db.lists
+        list.update_one({'_id': ObjectId(id)}, {"$set":{"title":title ,"desc": desc}})
+        return "1"
 # mymongo = MyMongo(MONGODB_URL , 'os')
 # # mymongo.user_insert("KIM", "2@naver.com", "010-1111-1111", "1234")
 # mymongo.verify_password("12343232",ObjectId('64ba2af7b26ddf90ce9642ac'))
 # mymongo.find_user("1@naver.com")
 # mymongo.find_data()
+# mymongo.update_data("64bf3369c3a372b1fb3a29e3" , "김태경", "광산 김씨가 김해 김씨보다 쌍놈이다")
 
 # 원문 비밀번호를, 암호화 하는 함수
 
